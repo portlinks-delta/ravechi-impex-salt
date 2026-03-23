@@ -17,7 +17,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
-import { cn, scrollToSection } from "@/lib/utils";
+import { cn } from "@/lib/utils";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("");
@@ -62,20 +63,21 @@ const Navbar = () => {
 
   return (
     <header className="relative bg-background shadow sticky top-0 z-50">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6">
-        <Link
-          href="/"
-          className="font-mono w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white font-bold shrink-0"
-        >
-          SRI
-        </Link>
-
+      <div className="mx-auto flex container items-center justify-between px-4 py-3 sm:px-6">
+        <div className="flex items-center justify-center gap-2">
+          <Link
+            href="/"
+            className="font-mono text-sm w-8 h-8 rounded-xl bg-primary flex items-center justify-center text-white font-bold shrink-0"
+          >
+            SRI
+          </Link>
+          <span className="text-lg font-bold">Shree Ravechi Impex</span>
+        </div>
         <div className="flex items-center gap-2">
           {navigationData.map((item) => (
             <a
               key={item.id}
               href={item.href}
-              // onClick={() => scrollToSection(item.id)}
               className={cn(navLinkClass(item.id), "max-md:hidden")}
             >
               {item.title}

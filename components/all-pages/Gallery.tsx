@@ -19,13 +19,15 @@ export default function Gallery() {
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
-    <section className="w-full py-20 ">
+    <section id="gallery" className="w-full py-20 ">
       <div className="max-w-7xl mx-auto lg:px-12">
-        {/* HEADER */}
         <div className="max-w-max md:max-w-3xl mx-auto text-center mb-14">
-          <p className="text-sm uppercase tracking-widest text-primary mb-3">
-            Our Gallery
-          </p>
+          <a
+            href="/#gallery"
+            className="text-sm bg-primary w-fit mx-auto px-3 py-2 rounded text-white uppercase tracking-widest text-primary mb-3"
+          >
+            Gallery
+          </a>
 
           <h2 className="text-2xl md:text-5xl font-bold text-slate-900 leading-tight mb-4">
             Product & Operations Showcase

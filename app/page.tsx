@@ -8,12 +8,15 @@ import Products from "@/components/all-pages/Products";
 import Quality from "@/components/all-pages/Qa";
 import WhyChooseUs from "@/components/all-pages/WhyChooseUs";
 import { GoToTop } from "@/components/ui/GoToTop";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
 import VisitorCount from "@/components/ui/VisitCount";
 import { WhatsAppWidget } from "@/components/ui/WhatsAppWidget";
 
 const page = () => {
   return (
     <section className="">
+      <ScrollProgress />
+
       {/* widgets */}
       <VisitorCount />
       <GoToTop />

@@ -182,7 +182,7 @@ html {
 }
 
 body:hover::-webkit-scrollbar {
-  width: 8px;
+  width: 0px;
 }
 
 .grecaptcha-badge {

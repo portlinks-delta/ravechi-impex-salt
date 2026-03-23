@@ -8,11 +8,13 @@ export default function Contact() {
     <section id="contact" className="w-full py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="max-w-3xl mx-auto text-center mb-14">
-          <p className="text-sm uppercase tracking-widest text-primary mb-3">
-            Contact Us
-          </p>
-
-          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 leading-tight mb-4">
+          <a
+            href="/#contact"
+            className="text-sm my-5 bg-primary w-fit mx-auto px-3 py-2 rounded text-white uppercase tracking-widest text-primary mb-3"
+          >
+            Contact
+          </a>
+          <h2 className="text-3xl my-3  md:text-5xl font-bold text-slate-900 leading-tight mb-4">
             Shree Ravechi Impex
           </h2>
 
@@ -22,7 +24,6 @@ export default function Contact() {
           </p>
         </div>
 
-        {/* CONTACT CARDS */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="p-6 border border-slate-200 rounded-2xl text-center hover:shadow-md transition">
             <Mail className="w-6 h-6 text-primary mx-auto mb-3" />

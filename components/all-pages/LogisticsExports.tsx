@@ -37,14 +37,16 @@ export default function LogisticsExports() {
   ];
 
   return (
-    <section className="w-full py-20 bg-slate-50">
+    <section id="logistics" className="w-full py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* HEADER */}
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <p className="text-sm uppercase tracking-widest text-primary mb-3">
-            Logistics & Export
-          </p>
-
+          <a
+            href="/#logistics"
+            className="text-sm bg-primary w-fit mx-auto px-3 py-2 rounded text-white uppercase tracking-widest text-primary mb-3"
+          >
+            Logistics
+          </a>
           <h2 className="text-3xl md:text-5xl font-bold text-slate-900 leading-tight mb-4">
             Efficient Export and Logistics Operations
           </h2>

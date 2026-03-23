@@ -40,14 +40,15 @@ const features = [
 ];
 export default function Quality() {
   return (
-    <section className="w-full py-20 ">
+    <section id="quality" className="w-full py-20 ">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        {/* HEADER */}
         <div className="flex justify-center items-center flex-col text-center max-w-3xl mx-auto mb-12">
-          <p className="text-sm uppercase tracking-widest text-primary mb-3">
-            Quality Assurance
-          </p>
-
+          <a
+            href="/#quality"
+            className="text-sm bg-primary w-fit mx-auto px-3 py-2 rounded text-white uppercase tracking-widest text-primary mb-3"
+          >
+            Quality
+          </a>
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-slate-900 leading-tight">
             Ensuring Consistent Quality at Every Stage
           </h2>

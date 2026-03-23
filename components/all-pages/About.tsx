@@ -14,9 +14,12 @@ export default function About() {
   return (
     <section id="about" className="w-full py-20 bg-slate-50 text-slate-900">
       <div className="max-w-3xl mx-auto text-center mb-12">
-        <p className="text-sm uppercase tracking-widest text-primary mb-3">
+        <a
+          href="/#about"
+          className="text-sm bg-primary w-fit mx-auto px-3 py-2 rounded text-white uppercase tracking-widest text-primary mb-3"
+        >
           About Us
-        </p>
+        </a>
         <h2 className="text-3xl md:text-5xl font-bold text-slate-900 leading-tight mb-4">
           Shree Ravechi Impex Delivering High-Quality Salt
         </h2>
@@ -81,14 +84,8 @@ export default function About() {
               ))}
             </CarouselContent>
 
-            <CarouselPrevious
-              variant={"default"}
-              className="left-2 cursor-pointer"
-            />
-            <CarouselNext
-              variant={"default"}
-              className="right-2 cursor-pointer"
-            />
+            <CarouselPrevious className="left-2 cursor-pointer" />
+            <CarouselNext className="right-2 cursor-pointer" />
           </Carousel>
         </div>
 

@@ -13,9 +13,8 @@ const navLinks = [
 export default function Footer() {
   return (
     <footer className="w-full bg-slate-900 text-slate-300 py-12">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {/* LOGO + NAME */}
+      <div className="container mx-auto px-6 lg:px-12">
+        <div className="flex items-center justify-between flex-wrap flex-col md:flex-row gap-10">
           <div>
             <div className="flex mb-4 items-center">
               <Link
@@ -34,7 +33,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* CONTACT */}
           <div>
             <h3 className="text-white font-semibold mb-4">Contact</h3>
             <div className="space-y-3 text-sm">
@@ -62,8 +60,6 @@ export default function Footer() {
               </div>
             </div>
           </div>
-
-          {/* QUICK LINKS */}
           <div>
             <h3 className="text-white font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
@@ -81,7 +77,6 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-
         <div className="border-t border-slate-700 mt-10 pt-6 text-center text-sm text-slate-400">
           © {new Date().getFullYear()} Shree Ravechi Impex. All rights reserved.
         </div>

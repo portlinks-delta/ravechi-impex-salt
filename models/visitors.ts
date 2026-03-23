@@ -1,17 +1,19 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface IVisitor extends Document {
-  count: number;
+  ip: string;
+  lastVisitedAt: Date;
+  visitCount: number;
 }
 
 const VisitorSchema = new Schema<IVisitor>(
   {
-    count: { type: Number, default: 0 },
+    ip: { type: String, required: true, unique: true },
+    lastVisitedAt: { type: Date, default: Date.now },
+    visitCount: { type: Number, default: 1 },
   },
   { timestamps: true },
 );
 
-const VisitorModel =
-  mongoose.models.Visitor || mongoose.model<IVisitor>("Visitor", VisitorSchema);
-
-export default VisitorModel;
+export default mongoose.models.Visitor ||
+  mongoose.model<IVisitor>("Visitor", VisitorSchema);
