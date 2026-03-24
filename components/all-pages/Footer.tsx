@@ -14,7 +14,8 @@ export default function Footer() {
   return (
     <footer className="w-full bg-slate-900 text-slate-300 py-12">
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between flex-wrap flex-col md:flex-row gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* Brand */}
           <div>
             <div className="flex mb-4 items-center">
               <Link
@@ -27,12 +28,13 @@ export default function Footer() {
                 Shree Ravechi Impex
               </span>
             </div>
-            <p className="text-sm text-slate-400 leading-relaxed">
+            <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
               Trusted exporter delivering quality products with reliability,
               transparency, and global reach.
             </p>
           </div>
 
+          {/* Contact */}
           <div>
             <h3 className="text-white font-semibold mb-4">Contact</h3>
             <div className="space-y-3 text-sm">
@@ -60,6 +62,8 @@ export default function Footer() {
               </div>
             </div>
           </div>
+
+          {/* Links */}
           <div>
             <h3 className="text-white font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
@@ -77,6 +81,8 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+
+        {/* Bottom */}
         <div className="border-t border-slate-700 mt-10 pt-6 text-center text-sm text-slate-400">
           © {new Date().getFullYear()} Shree Ravechi Impex. All rights reserved.
         </div>
