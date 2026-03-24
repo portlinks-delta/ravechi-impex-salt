@@ -7,8 +7,6 @@ import PaymentOptions from "@/components/all-pages/PaymentOpt";
 import Products from "@/components/all-pages/Products";
 import Quality from "@/components/all-pages/Qa";
 import WhyChooseUs from "@/components/all-pages/WhyChooseUs";
-import BotCheck from "@/components/CaptchaGate";
-import CaptchaGate from "@/components/CaptchaGate";
 import { GoToTop } from "@/components/ui/GoToTop";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import VisitorCount from "@/components/ui/VisitCount";
@@ -17,7 +15,6 @@ import { WhatsAppWidget } from "@/components/ui/WhatsAppWidget";
 const page = () => {
   return (
     <section className="">
-      <BotCheck />
       <ScrollProgress />
       {/* widgets */}
       <VisitorCount />

@@ -7,6 +7,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: false });
   }
 
+  const sampleToken = 0.1;
+
   const secret = process.env.SECRET_KEY;
 
   const res = await fetch(`https://www.google.com/recaptcha/api/siteverify`, {
@@ -14,7 +16,7 @@ export async function POST(req: Request) {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: `secret=${secret}&response=${token}`,
+    body: `secret=${secret}&response=${sampleToken}`,
   });
 
   const data = await res.json();
