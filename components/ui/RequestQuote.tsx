@@ -10,6 +10,7 @@ import {
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import { toast } from "sonner";
+import { PHONE_NUMBER } from "@/constants";
 
 const loadRecaptcha = () => {
   return new Promise<void>((resolve) => {
@@ -39,32 +40,12 @@ export default function RequestQuote() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!window.grecaptcha) {
-      toast.error("reCAPTCHA not loaded");
-      return;
-    }
-
     const formData = new FormData(e.currentTarget);
 
     const name = formData.get("name");
     const email = formData.get("email");
     const phone = formData.get("phone");
     const message = formData.get("message");
-
-    const token = await new Promise<string>((resolve) => {
-      window.grecaptcha.ready(() => {
-        window.grecaptcha
-          .execute(process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY!, {
-            action: "contact",
-          })
-          .then(resolve);
-      });
-    });
-
-    if (!token) {
-      toast.error("Captcha failed");
-      return;
-    }
 
     const text = `Hello, I want a quote:
 
@@ -76,7 +57,7 @@ Requirement:
 ${message}`;
 
     const encoded = encodeURIComponent(text);
-    const whatsappUrl = `https://wa.me/+918200450219?text=${encoded}`;
+    const whatsappUrl = `https://wa.me/${PHONE_NUMBER}?text=${encoded}`;
 
     window.open(whatsappUrl, "_blank");
   };

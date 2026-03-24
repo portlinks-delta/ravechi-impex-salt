@@ -1,5 +1,6 @@
 "use client";
 
+import { EMAIL, FORMATTED_PHONE_NUMBER } from "@/constants";
 import { Mail, Phone, MapPin } from "lucide-react";
 import Link from "next/link";
 
@@ -15,7 +16,6 @@ export default function Footer() {
     <footer className="w-full bg-slate-950 text-slate-300">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-14">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {/* Brand */}
           <div>
             <div className="flex items-center mb-5">
               <Link
@@ -36,7 +36,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Contact */}
           <div>
             <h3 className="text-white font-semibold text-base mb-5 tracking-wide">
               Contact Information
@@ -48,15 +47,15 @@ export default function Footer() {
                 className="flex items-center gap-3 hover:text-sky-400 transition-colors"
               >
                 <Mail className="w-4 h-4 text-sky-400" />
-                info@sri.in
+                {EMAIL}
               </a>
 
               <a
                 href="tel:+919876543210"
                 className="flex items-center gap-3 hover:text-sky-400 transition-colors"
               >
-                <Phone className="w-4 h-4 text-sky-400" />
-                +91 98765 43210
+                <Phone className="w-4 h-4 text-sky-400" />{" "}
+                {FORMATTED_PHONE_NUMBER}
               </a>
 
               <div className="flex items-start gap-3">
@@ -66,7 +65,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h3 className="text-white font-semibold text-base mb-5 tracking-wide">
               Quick Links
@@ -88,7 +86,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Divider */}
         <div className="border-t border-slate-800 mt-12 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
           <p>
             © {new Date().getFullYear()} Shree Ravechi Impex. All rights

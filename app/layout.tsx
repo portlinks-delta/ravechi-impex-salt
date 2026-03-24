@@ -3,7 +3,6 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/all-pages/Footer";
-import Script from "next/script";
 import { Toaster } from "@/components/ui/sonner";
 
 const poppins = Poppins({
