@@ -16,7 +16,6 @@ const page = () => {
   return (
     <section className="">
       <ScrollProgress />
-
       {/* widgets */}
       <VisitorCount />
       <GoToTop />

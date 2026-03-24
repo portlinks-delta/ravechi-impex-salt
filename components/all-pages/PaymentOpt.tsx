@@ -1,21 +1,40 @@
 "use client";
 
 import { CreditCard, Landmark } from "lucide-react";
+import { motion } from "motion/react";
 
 export default function PaymentOptions() {
   return (
     <section className="max-w-7xl mx-auto px-6 lg:px-12 rounded-3xl w-full py-16 mb-10 bg-accent">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <p className="text-sm text-center uppercase tracking-widest text-primary mb-3">
+        <motion.p
+          className="text-sm text-center uppercase tracking-widest text-primary mb-3"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.4, ease: "easeIn" }}
+        >
           Payment Terms
-        </p>
+        </motion.p>
 
-        <h2 className="text-center text-2xl md:text-4xl font-bold text-slate-900 mb-10">
+        <motion.h2
+          className="text-center text-2xl md:text-4xl font-bold text-slate-900 mb-10"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.1, ease: "easeIn" }}
+        >
           Payment Options
-        </h2>
+        </motion.h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div className="flex items-center gap-4 p-6 rounded-2xl border border-border bg-white hover:shadow-lg hover:scale-[1.02] transition-all cursor-pointer">
+          <motion.div
+            className="flex items-center gap-4 p-6 rounded-2xl border border-border bg-white hover:shadow-lg hover:scale-[1.02] transition-all cursor-pointer"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.45, ease: "easeIn" }}
+          >
             <div className="p-3 rounded-xl bg-primary text-white">
               <CreditCard className="w-6 h-6" />
             </div>
@@ -25,9 +44,15 @@ export default function PaymentOptions() {
                 Pay upfront before shipment
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="flex items-center gap-4 p-6 rounded-2xl border border-border bg-white hover:shadow-lg hover:scale-[1.02] transition-all cursor-pointer">
+          <motion.div
+            className="flex items-center gap-4 p-6 rounded-2xl border border-border bg-white hover:shadow-lg hover:scale-[1.02] transition-all cursor-pointer"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.45, ease: "easeIn" }}
+          >
             <div className="p-3 rounded-xl bg-primary/10 text-primary">
               <Landmark className="w-6 h-6" />
             </div>
@@ -39,7 +64,7 @@ export default function PaymentOptions() {
                 Bank-secured international payment
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

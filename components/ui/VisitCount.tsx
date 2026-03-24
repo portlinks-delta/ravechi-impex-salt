@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Eye } from "lucide-react";
+import { NumberTicker } from "./number-ticker";
 
 export default function VisitorCount() {
   const [count, setCount] = useState<number | null>(null);
@@ -31,7 +32,7 @@ export default function VisitorCount() {
           <Eye className="w-4 h-4 text-primary" />
           <span className="font-medium">Visitors:</span>
         </div>
-        {count !== null ? count : "..."}
+        <NumberTicker value={count || 0} />
       </div>
     </div>
   );

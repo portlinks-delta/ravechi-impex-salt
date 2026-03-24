@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import Link from "next/link";
+import { motion } from "motion/react";
 
 const images = [
   "https://www.krishnasalts.com/wp-content/uploads/2024/06/salt-2.jpeg",
@@ -19,48 +21,72 @@ export default function Gallery() {
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
-    <section id="gallery" className="w-full py-20 ">
+    <section id="gallery" className="w-full py-20">
       <div className="max-w-7xl mx-auto lg:px-12">
+        {/* Header */}
         <div className="max-w-max md:max-w-3xl mx-auto text-center mb-14">
-          <a
-            href="/#gallery"
-            className="text-sm bg-primary w-fit mx-auto px-3 py-2 rounded text-white uppercase tracking-widest text-primary mb-3"
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            Gallery
-          </a>
+            <Link
+              href="/#gallery"
+              className="text-sm bg-primary w-fit mx-auto px-3 py-2 rounded text-white uppercase tracking-widest mb-3 inline-block"
+            >
+              Gallery
+            </Link>
+          </motion.div>
 
-          <h2 className="text-2xl md:text-5xl font-bold text-slate-900 leading-tight mb-4">
+          <motion.h2
+            className="text-2xl md:text-5xl font-bold text-slate-900 leading-tight mb-4"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+          >
             Product & Operations Showcase
-          </h2>
+          </motion.h2>
 
-          <p className="text-muted-foreground text-base md:text-lg">
+          <motion.p
+            className="text-muted-foreground text-base md:text-lg"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+          >
             A glimpse of our salt production, packaging, and export process.
-          </p>
+          </motion.p>
         </div>
 
-        {/* GRID */}
+        {/* Grid */}
         <div className="px-6 md:px-0 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {images.map((src, i) => (
-            <div
+            <motion.div
               key={i}
               onClick={() => setSelected(src)}
               className="relative cursor-pointer group overflow-hidden rounded-2xl"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: i * 0.06, ease: "easeOut" }}
+              whileHover={{ scale: 1.03, transition: { duration: 0.25 } }}
             >
               <Image
                 src={src}
                 alt="Gallery Image"
                 width={400}
                 height={300}
-                className="w-full h-48 object-cover group-hover:scale-105 transition duration-500"
+                className="w-full h-48 object-cover transition duration-500"
               />
-
-              {/* overlay */}
+              {/* Overlay */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition" />
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        {/* LIGHTBOX */}
+        {/* Lightbox */}
         <Dialog open={!!selected} onOpenChange={() => setSelected(null)}>
           <DialogContent className="max-w-3xl p-0 overflow-hidden">
             {selected && (

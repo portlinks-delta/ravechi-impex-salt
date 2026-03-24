@@ -7,6 +7,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Link from "next/link";
+import { motion } from "motion/react";
 
 const products = [
   {
@@ -51,23 +53,45 @@ export default function ProductsAlt() {
   return (
     <section id="products" className="w-full py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        {/* Header */}
         <div className="flex justify-center items-center text-center flex-col mb-16 max-w-2xl mx-auto">
-          <a
-            href="/#products"
-            className="text-sm bg-primary w-fit mx-auto px-3 py-2 rounded text-white uppercase tracking-widest text-primary mb-3"
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            Our Products
-          </a>
+            <Link
+              href="/#products"
+              className="text-sm bg-primary w-fit mx-auto px-3 py-2 rounded text-white uppercase tracking-widest mb-3 inline-block"
+            >
+              Our Products
+            </Link>
+          </motion.div>
 
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          <motion.h2
+            className="text-3xl md:text-5xl font-bold mb-4"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+          >
             Our Salt Product Range
-          </h2>
+          </motion.h2>
 
-          <p className="text-slate-600">
+          <motion.p
+            className="text-slate-600"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+          >
             We supply a wide range of salt products for industrial, food
             processing, and infrastructure applications across global markets.
-          </p>
+          </motion.p>
         </div>
+
+        {/* Products */}
         <div className="space-y-20">
           {products.map((product, index) => {
             const isReverse = index % 2 !== 0;
@@ -75,9 +99,16 @@ export default function ProductsAlt() {
             return (
               <div
                 key={index}
-                className={`grid md:grid-cols-2 gap-10 items-center`}
+                className="grid md:grid-cols-2 gap-10 items-center"
               >
-                <div className={`relative ${isReverse ? "md:order-2" : ""}`}>
+                {/* Carousel */}
+                <motion.div
+                  className={`relative ${isReverse ? "md:order-2" : ""}`}
+                  initial={{ opacity: 0, x: isReverse ? 40 : -40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.55, ease: "easeOut" }}
+                >
                   <Carousel className="w-full group">
                     <CarouselContent>
                       {product.images.map((img, i) => (
@@ -90,21 +121,26 @@ export default function ProductsAlt() {
                         </CarouselItem>
                       ))}
                     </CarouselContent>
-
                     <CarouselPrevious className="left-2 cursor-pointer" />
                     <CarouselNext className="right-2 cursor-pointer" />
                   </Carousel>
-                </div>
+                </motion.div>
 
-                <div className={`${isReverse ? "md:order-1" : ""}`}>
+                {/* Text */}
+                <motion.div
+                  className={isReverse ? "md:order-1" : ""}
+                  initial={{ opacity: 0, x: isReverse ? -40 : 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.55, delay: 0.1, ease: "easeOut" }}
+                >
                   <h3 className="text-2xl md:text-3xl font-semibold mb-4">
                     {product.title}
                   </h3>
-
                   <p className="text-slate-600 text-lg leading-relaxed">
                     {product.desc}
                   </p>
-                </div>
+                </motion.div>
               </div>
             );
           })}

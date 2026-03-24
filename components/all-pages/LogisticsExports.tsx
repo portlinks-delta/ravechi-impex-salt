@@ -1,6 +1,8 @@
 "use client";
 
 import { Ship, Package, FileText, Globe, Truck, Boxes } from "lucide-react";
+import Link from "next/link";
+import { motion } from "motion/react";
 
 export default function LogisticsExports() {
   const features = [
@@ -39,33 +41,59 @@ export default function LogisticsExports() {
   return (
     <section id="logistics" className="w-full py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        {/* HEADER */}
+        {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <a
-            href="/#logistics"
-            className="text-sm bg-primary w-fit mx-auto px-3 py-2 rounded text-white uppercase tracking-widest text-primary mb-3"
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            Logistics
-          </a>
-          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 leading-tight mb-4">
-            Efficient Export and Logistics Operations
-          </h2>
+            <Link
+              href="/#logistics"
+              className="text-sm bg-primary w-fit mx-auto px-3 py-2 rounded text-white uppercase tracking-widest mb-3 inline-block"
+            >
+              Logistics
+            </Link>
+          </motion.div>
 
-          <p className="text-slate-600 text-lg">
+          <motion.h2
+            className="text-3xl md:text-5xl font-bold text-slate-900 leading-tight mb-4"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+          >
+            Efficient Export and Logistics Operations
+          </motion.h2>
+
+          <motion.p
+            className="text-slate-600 text-lg"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+          >
             Operations benefit from proximity to Mundra Port, enabling efficient
             export shipments.
-          </p>
+          </motion.p>
         </div>
 
-        {/* GRID */}
+        {/* Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((item, i) => {
             const Icon = item.icon;
-
             return (
-              <div
+              <motion.div
                 key={i}
                 className="group bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-lg hover:border-sky-200 transition-all duration-300"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{
+                  duration: 0.45,
+                  ease: "easeOut",
+                }}
               >
                 <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-sky-50 mb-4 group-hover:bg-sky-100 transition">
                   <Icon className="w-6 h-6 text-primary" />
@@ -78,18 +106,23 @@ export default function LogisticsExports() {
                 <p className="text-sm text-slate-600 leading-relaxed">
                   {item.desc}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
-        {/* FOOT NOTE */}
-        <div className="mt-12 text-center">
+        <motion.div
+          className="mt-12 text-center"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+        >
           <p className="text-slate-500 max-w-2xl mx-auto">
             Our logistics network allows us to serve buyers across Asia, the
             Middle East, Europe and other regions.
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
