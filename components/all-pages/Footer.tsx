@@ -51,7 +51,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="tel:+919876543210"
+                href={`tel:${FORMATTED_PHONE_NUMBER}`}
                 className="flex items-center gap-3 hover:text-sky-400 transition-colors"
               >
                 <Phone className="w-4 h-4 text-sky-400" />{" "}
