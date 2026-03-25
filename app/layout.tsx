@@ -5,6 +5,7 @@ import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/all-pages/Footer";
 import Script from "next/script";
 import { Toaster } from "@/components/ui/sonner";
+import { EMAIL, PHONE_NUMBER } from "@/constants";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -121,9 +122,9 @@ export default function RootLayout({
               },
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+91-00000 00000", // 🔁 real number
+                telephone: PHONE_NUMBER,
                 contactType: "sales",
-                email: "info@sri.in", // 🔁 real email
+                email: EMAIL,
                 availableLanguage: ["English", "Hindi", "Gujarati"],
               },
             }),
@@ -131,12 +132,10 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <main>
-          <Toaster />
-          <Navbar />
-          {children}
-          <Footer />
-        </main>
+        <Navbar />
+        <Toaster />
+        <main className="overflow-hidden">{children}</main>
+        <Footer />
       </body>
     </html>
   );

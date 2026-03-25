@@ -28,7 +28,6 @@ export default function CheckPage() {
 
             window.location.href = "/";
           } else {
-            // 🚨 HARD BLOCK → 404
             window.location.href = "/blocked";
           }
         });

@@ -3,10 +3,15 @@ import type { NextRequest } from "next/server";
 
 export function proxy(req: NextRequest) {
   const hasCaptcha = req.cookies.get("captcha_passed");
+  const { pathname } = req.nextUrl;
 
-  const url = req.nextUrl;
-
-  if (url.pathname.startsWith("/check") || url.pathname.startsWith("/api")) {
+  if (
+    pathname.startsWith("/check") ||
+    pathname.startsWith("/blocked") ||
+    pathname.startsWith("/api") ||
+    pathname.startsWith("/_next") ||
+    pathname === "/favicon.ico"
+  ) {
     return NextResponse.next();
   }
 
@@ -18,5 +23,5 @@ export function proxy(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|check|blocked).*)"],
 };

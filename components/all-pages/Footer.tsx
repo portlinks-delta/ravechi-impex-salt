@@ -13,18 +13,18 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-slate-950 text-slate-300">
+    <footer className="w-full bg-slate-950 text-slate-300 pb-20">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-14">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
             <div className="flex items-center mb-5">
               <Link
                 href="/"
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 text-white font-bold text-sm shadow-md"
+                className="w-8 h-8 flex text-xs items-center justify-center rounded-lg bg-gradient-to-br from-sky-500 to-blue-600 text-white font-bold text-sm shadow-md"
               >
                 SRI
               </Link>
-              <span className="ml-3 text-lg font-semibold text-white tracking-wide">
+              <span className="ml-2 md:ml-3 text-sm md:text-lg font-bold tracking-wide">
                 Shree Ravechi Impex
               </span>
             </div>
@@ -87,7 +87,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-slate-800 mt-12 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-          <p>
+          <p className="text-center text-xs md:text-sm py-2">
             © {new Date().getFullYear()} Shree Ravechi Impex. All rights
             reserved.
           </p>

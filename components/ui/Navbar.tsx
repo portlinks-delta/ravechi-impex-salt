@@ -55,7 +55,7 @@ const Navbar = () => {
 
   const navLinkClass = (id: string) =>
     cn(
-      "hover:text-primary transition-colors px-3 py-1.5 rounded-md text-sm font-medium",
+      "hover:text-primary transition-colors px-3 py-1.5 rounded-md text-sm font-medium ",
       activeSection === id
         ? "bg-primary/10 text-primary font-semibold"
         : "text-muted-foreground",
@@ -73,7 +73,7 @@ const Navbar = () => {
             >
               SRI
             </Link>
-            <span className="ml-3 text-lg font-bold text-foreground tracking-wide">
+            <span className="ml-3 text-sm md:text-lg font-bold text-foreground tracking-wide">
               Shree Ravechi Impex
             </span>
           </div>
@@ -126,11 +126,11 @@ const Navbar = () => {
                 <Link
                   href="/"
                   onClick={() => setMobileOpen(false)}
-                  className="w-8 h-8 flex items-center justify-center rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 text-white font-bold text-sm shadow-md"
+                  className="w-6 h-6 flex text-xs items-center justify-center rounded-lg bg-gradient-to-br from-sky-500 to-blue-600 text-white font-bold text-sm shadow-md"
                 >
                   SRI
                 </Link>
-                <span className="ml-3 text-lg font-bold text-foreground tracking-wide">
+                <span className="ml-2 md:ml-3 text-sm md:text-lg font-bold text-foreground tracking-wide">
                   Shree Ravechi Impex
                 </span>
               </div>
