@@ -6,6 +6,7 @@ import { Badge } from "../ui/badge";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
+import { scrollToView } from "@/lib/scrollToView";
 
 export default function Hero() {
   return (
@@ -74,15 +75,14 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.45, ease: "easeOut" }}
         >
           <RequestQuote />
-          <Link href="#products" className="w-full sm:w-auto">
-            <Button
-              variant="outline"
-              size="lg"
-              className="w-full sm:w-auto border-white/30 text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-200"
-            >
-              View Products
-            </Button>
-          </Link>
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => scrollToView("products")}
+            className="w-full sm:w-auto border-white/30 text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-200"
+          >
+            View Products
+          </Button>
         </motion.div>
 
         <motion.div

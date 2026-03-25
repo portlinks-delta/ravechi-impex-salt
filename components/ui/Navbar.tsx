@@ -1,10 +1,10 @@
 "use client";
 
 const navigationData = [
-  { title: "Home", href: "/", id: "" },
+  { title: "Home", href: "/", id: "#home" },
   { title: "About Us", href: "/#about", id: "about" },
   { title: "Products", href: "/#products", id: "products" },
-  { title: "Contacts", href: "/#contact", id: "contact" },
+  { title: "Contact Us", href: "/#contact", id: "contact" },
 ];
 
 import { useEffect, useState } from "react";
@@ -13,6 +13,8 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { motion, AnimatePresence } from "motion/react";
+import { Button } from "./button";
+import { scrollToView } from "@/lib/scrollToView";
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("");
@@ -80,13 +82,16 @@ const Navbar = () => {
 
           <div className="flex items-center gap-2">
             {navigationData.map((item) => (
-              <Link
+              <Button
                 key={item.id}
-                href={item.href}
-                className={cn(navLinkClass(item.id), "max-md:hidden")}
+                onClick={() => {
+                  scrollToView(item.id);
+                }}
+                variant={activeSection === item.id ? "default" : "ghost"}
+                className="cursor-pointer"
               >
                 {item.title}
-              </Link>
+              </Button>
             ))}
 
             <motion.button
@@ -175,21 +180,19 @@ const Navbar = () => {
                     },
                   }}
                 >
-                  <Link
-                    href={item.href}
-                    onClick={() => setMobileOpen(false)}
-                    className={cn(
-                      "flex items-center gap-3 px-4 py-4 rounded-xl text-2xl font-semibold transition-colors",
-                      activeSection === item.id
-                        ? "bg-primary/10 text-primary"
-                        : "text-foreground hover:bg-muted hover:text-primary",
-                    )}
+                  <Button
+                    onClick={() => {
+                      setMobileOpen(false);
+                      scrollToView(item.id);
+                    }}
+                    variant={activeSection === item.id ? "default" : "ghost"}
+                    className="cursor-pointer"
                   >
                     <span className="text-xs font-mono text-muted-foreground w-5">
                       0{i + 1}
                     </span>
                     {item.title}
-                  </Link>
+                  </Button>
                 </motion.div>
               ))}
             </nav>

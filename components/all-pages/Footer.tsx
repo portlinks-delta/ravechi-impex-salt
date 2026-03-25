@@ -3,6 +3,7 @@
 import { EMAIL, FORMATTED_PHONE_NUMBER } from "@/constants";
 import { Mail, Phone, MapPin } from "lucide-react";
 import Link from "next/link";
+import VisitorCount from "../ui/VisitCount";
 
 const navLinks = [
   { title: "Home", href: "/" },
@@ -109,6 +110,7 @@ export default function Footer() {
           </p>
         </div>
       </div>
+      <VisitorCount />
     </footer>
   );
 }

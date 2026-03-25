@@ -4,6 +4,8 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import RequestQuote from "../ui/RequestQuote";
 import Link from "next/link";
 import { motion } from "motion/react";
+import { scrollToView } from "@/lib/scrollToView";
+import { Button } from "../ui/button";
 
 export default function Contact() {
   return (
@@ -16,12 +18,7 @@ export default function Contact() {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            <Link
-              href="/#contact"
-              className="text-sm my-5 bg-primary w-fit mx-auto px-3 py-2 rounded text-white uppercase tracking-widest mb-3 inline-block"
-            >
-              Contact
-            </Link>
+            <Button onClick={() => scrollToView("contact")}>Contact Us</Button>
           </motion.div>
 
           <motion.h2

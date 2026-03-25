@@ -1,4 +1,3 @@
-import { rateLimit } from "@/lib/rateLimit";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
@@ -7,17 +6,6 @@ export async function POST(req: Request) {
   if (!token) {
     return NextResponse.json({ success: false });
   }
-
-  const ip =
-    req.headers.get("x-forwarded-for")?.split(",")[0] ||
-    req.headers.get("x-real-ip") ||
-    req.headers.get("cf-connecting-ip") ||
-    req.headers.get("true-client-ip") ||
-    "0.0.0.0";
-
-  const { success } = rateLimit(ip);
-  if (!success)
-    return NextResponse.json({ success: false, error: "Rate limit exceeded" });
 
   const secret = process.env.SECRET_KEY;
 

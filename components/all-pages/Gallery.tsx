@@ -5,6 +5,8 @@ import Image from "next/image";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Link from "next/link";
 import { motion } from "motion/react";
+import { scrollToView } from "@/lib/scrollToView";
+import { Button } from "../ui/button";
 
 const images = [
   "https://www.krishnasalts.com/wp-content/uploads/2024/06/salt-2.jpeg",
@@ -31,12 +33,7 @@ export default function Gallery() {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            <Link
-              href="/#gallery"
-              className="text-sm bg-primary w-fit mx-auto px-3 py-2 rounded text-white uppercase tracking-widest mb-3 inline-block"
-            >
-              Gallery
-            </Link>
+            <Button onClick={() => scrollToView("gallery")}>Gallery</Button>
           </motion.div>
 
           <motion.h2

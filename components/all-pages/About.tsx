@@ -11,6 +11,8 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
+import { Button } from "../ui/button";
+import { scrollToView } from "@/lib/scrollToView";
 
 export default function About() {
   return (
@@ -22,12 +24,7 @@ export default function About() {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
-          <Link
-            href="/#about"
-            className="text-sm bg-primary w-fit mx-auto px-3 py-2 rounded text-white uppercase tracking-widest mb-3 inline-block"
-          >
-            About Us
-          </Link>
+          <Button onClick={() => scrollToView("products")}>About Us</Button>
         </motion.div>
 
         <motion.h2

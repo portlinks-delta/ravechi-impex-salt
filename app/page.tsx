@@ -17,7 +17,6 @@ const page = () => {
     <section className="">
       <ScrollProgress />
       {/* widgets */}
-      <VisitorCount />
       <GoToTop />
       <WhatsAppWidget />
       {/* sections */}

@@ -1,8 +1,9 @@
 "use client";
 
 import { Ship, Package, FileText, Globe, Truck, Boxes } from "lucide-react";
-import Link from "next/link";
 import { motion } from "motion/react";
+import { scrollToView } from "@/lib/scrollToView";
+import { Button } from "../ui/button";
 
 export default function LogisticsExports() {
   const features = [
@@ -49,12 +50,7 @@ export default function LogisticsExports() {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            <Link
-              href="/#logistics"
-              className="text-sm bg-primary w-fit mx-auto px-3 py-2 rounded text-white uppercase tracking-widest mb-3 inline-block"
-            >
-              Logistics
-            </Link>
+            <Button onClick={() => scrollToView("logistics")}>Logistics</Button>
           </motion.div>
 
           <motion.h2

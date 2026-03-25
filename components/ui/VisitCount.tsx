@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Eye } from "lucide-react";
-import { NumberTicker } from "./number-ticker";
+import SlotCounter from "react-slot-counter";
 
 export default function VisitorCount() {
   const [count, setCount] = useState<number | null>(null);
@@ -15,7 +15,6 @@ export default function VisitorCount() {
         });
 
         const data = await res.json();
-
         setCount(data.totalVisits);
       } catch (err) {
         console.error("Visitor count error:", err);
@@ -26,13 +25,23 @@ export default function VisitorCount() {
   }, []);
 
   return (
-    <div className="fixed bottom-20 right-5 z-50">
-      <div className="flex justify-center items-center gap-3 px-4 py-2 bg-white shadow-lg border border-slate-200 rounded-xl">
+    <div className="cursor-pointer text-white w-fit mx-auto z-50">
+      <div className="flex justify-center text-center items-center gap-3 px-4 py-2 shadow-lg border border-border/20 rounded-xl">
         <div className="flex items-center justify-center gap-2">
           <Eye className="w-4 h-4 text-primary" />
-          <span className="font-medium">Visitors:</span>
+          <span className="font-medium text-background">Visitors:</span>
         </div>
-        <NumberTicker value={count || 0} />
+        <span className="font-bold font-mono text-lg">
+          {count !== null ? (
+            <SlotCounter
+              animateOnVisible
+              animateUnchanged
+              value={count.toString().padStart(3, "0").split("")}
+            />
+          ) : (
+            <div className="w-[60px] h-[1em]" />
+          )}
+        </span>
       </div>
     </div>
   );

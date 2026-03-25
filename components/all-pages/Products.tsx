@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/carousel";
 import Link from "next/link";
 import { motion } from "motion/react";
+import { scrollToView } from "@/lib/scrollToView";
+import { Button } from "../ui/button";
 
 const products = [
   {
@@ -53,7 +55,6 @@ export default function ProductsAlt() {
   return (
     <section id="products" className="w-full py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Header */}
         <div className="flex justify-center items-center text-center flex-col mb-16 max-w-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -61,12 +62,7 @@ export default function ProductsAlt() {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            <Link
-              href="/#products"
-              className="text-sm bg-primary w-fit mx-auto px-3 py-2 rounded text-white uppercase tracking-widest mb-3 inline-block"
-            >
-              Our Products
-            </Link>
+            <Button onClick={() => scrollToView("products")}>Products</Button>
           </motion.div>
 
           <motion.h2
