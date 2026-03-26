@@ -3,6 +3,8 @@
 import { CheckCircle } from "lucide-react";
 import Link from "next/link";
 import { motion } from "motion/react";
+import { Button } from "../ui/button";
+import { scrollToView } from "@/lib/scrollToView";
 
 export default function WhyChooseUs() {
   const points = [
@@ -17,7 +19,6 @@ export default function WhyChooseUs() {
   return (
     <section id="why-choose-us" className="w-full py-20">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-14">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -25,12 +26,9 @@ export default function WhyChooseUs() {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            <Link
-              href="/#why-choose-us"
-              className="text-sm bg-primary w-fit mx-auto px-3 py-2 rounded text-white uppercase tracking-widest mb-3 inline-block"
-            >
+            <Button onClick={() => scrollToView("why-choose-us")}>
               Why Choose Us
-            </Link>
+            </Button>
           </motion.div>
 
           <motion.h2
