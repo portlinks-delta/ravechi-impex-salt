@@ -18,5 +18,12 @@ jobs:
         port: ${{ secrets.SSH_PORT }}   # use secret here
 
         script: |
-          cd /var/www/sri
+          cd /home/pli/sri/frontend
+          pwd
+          ls -la
           git pull origin main
+          git log -1
+          rm -rf .next
+          npm ci
+          npm run build
+          sudo systemctl restart sri.admin.service

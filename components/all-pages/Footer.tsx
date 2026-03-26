@@ -104,8 +104,7 @@ export default function Footer() {
               <img
                 src="/pli-logo.svg"
                 alt="PortLinks India"
-                className="w-28 h-28 opacity-80"
-                // className="w-28 h-28 brightness-0 invert opacity-80"
+                className="w-28 h-28"
               />
             </a>
           </p>
