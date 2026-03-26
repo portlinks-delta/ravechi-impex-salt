@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import RequestQuote from "../ui/RequestQuote";
 import { Badge } from "../ui/badge";
-import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
 import { scrollToView } from "@/lib/scrollToView";

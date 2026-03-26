@@ -1,10 +1,10 @@
 "use client";
 
 const navigationData = [
-  { title: "Home", href: "/", id: "#home" },
+  { title: "Home", href: "/", id: "home" },
   { title: "About Us", href: "/#about", id: "about" },
   { title: "Products", href: "/#products", id: "products" },
-  { title: "Contact Us", href: "/#contact", id: "contact" },
+  { title: "Contacts", href: "/#contact", id: "contact" },
 ];
 
 import { useEffect, useState } from "react";
@@ -13,7 +13,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { motion, AnimatePresence } from "motion/react";
-import { Button } from "./button";
+import { Button } from "@/components/ui/button";
 import { scrollToView } from "@/lib/scrollToView";
 
 const Navbar = () => {
@@ -29,38 +29,34 @@ const Navbar = () => {
 
   useEffect(() => {
     const sectionIds = navigationData.map((item) => item.id).filter(Boolean);
-    const observers: IntersectionObserver[] = [];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visibleSections.length > 0) {
+          setActiveSection(visibleSections[0].target.id);
+        }
+      },
+      {
+        threshold: [0.25, 0.5, 0.75],
+      },
+    );
 
     sectionIds.forEach((id) => {
       const el = document.getElementById(id);
-      if (!el) return;
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveSection(id);
-        },
-        { rootMargin: "-40% 0px -55% 0px", threshold: 0 },
-      );
-      observer.observe(el);
-      observers.push(observer);
+      if (el) observer.observe(el);
     });
 
-    const handleScroll = () => {
-      if (window.scrollY < 100) setActiveSection("");
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      observers.forEach((o) => o.disconnect());
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => observer.disconnect();
   }, []);
 
   const navLinkClass = (id: string) =>
     cn(
-      "hover:text-primary transition-colors px-3 py-1.5 rounded-md text-sm font-medium ",
-      activeSection === id
-        ? "bg-primary/10 text-primary font-semibold"
-        : "text-muted-foreground",
+      "transition-colors duration-300 rounded-md text-sm font-medium",
+      activeSection === id ? "text-white bg-primary" : "text-muted-foreground",
     );
 
   return (
@@ -82,16 +78,19 @@ const Navbar = () => {
 
           <div className="flex items-center gap-2">
             {navigationData.map((item) => (
-              <Button
+              <Link
                 key={item.id}
-                onClick={() => {
-                  scrollToView(item.id);
-                }}
-                variant={activeSection === item.id ? "default" : "ghost"}
-                className="cursor-pointer"
+                href={item.href}
+                className={cn(navLinkClass(item.id), "max-md:hidden")}
               >
-                {item.title}
-              </Button>
+                <Button
+                  variant="link"
+                  onClick={() => scrollToView(item.id)}
+                  className={cn(navLinkClass(item.id), "max-md:hidden")}
+                >
+                  {item.title}
+                </Button>
+              </Link>
             ))}
 
             <motion.button
@@ -180,19 +179,21 @@ const Navbar = () => {
                     },
                   }}
                 >
-                  <Button
-                    onClick={() => {
-                      setMobileOpen(false);
-                      scrollToView(item.id);
-                    }}
-                    variant={activeSection === item.id ? "default" : "ghost"}
-                    className="cursor-pointer"
+                  <Link
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={cn(
+                      "flex items-center gap-3 px-4 py-4 rounded-xl text-2xl font-semibold transition-colors",
+                      activeSection === item.id
+                        ? "bg-primary/10 text-primary"
+                        : "text-foreground hover:bg-muted hover:text-primary",
+                    )}
                   >
                     <span className="text-xs font-mono text-muted-foreground w-5">
                       0{i + 1}
                     </span>
                     {item.title}
-                  </Button>
+                  </Link>
                 </motion.div>
               ))}
             </nav>
