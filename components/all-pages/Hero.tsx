@@ -18,6 +18,8 @@ export default function Hero() {
           fill
           src="/salt-1.png"
           alt="Salt background"
+          priority
+          sizes="100vw"
           className="w-full h-full object-cover scale-105"
         />
         <div className="absolute inset-0 bg-black/60" />
