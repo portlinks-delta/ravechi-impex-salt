@@ -15,7 +15,7 @@ import { Button } from "../ui/button";
 const products = [
   {
     title: "De-icing Road Salt",
-    desc: "Screened and used for road and surface de-icing applications in cold climate regions.",
+    desc: "Screened de-icing salt produced for reliable ice melting performance and snow management on roads, parking areas, industrial surfaces and cold storage management in winter conditions.",
     images: [
       "https://placehold.co/600x400",
       "https://placehold.co/600x400",
@@ -24,7 +24,7 @@ const products = [
   },
   {
     title: "Industrial Salt",
-    desc: "Salt used in chemical processing, textile industries, water treatment and other industrial operations. Available in different granulations depending on application.",
+    desc: "High-quality salt suitable for chemical processing, water treatment, textile industries and various industrial applications.",
     images: [
       "https://placehold.co/600x400",
       "https://placehold.co/600x400",
@@ -33,7 +33,7 @@ const products = [
   },
   {
     title: "Food Grade Salt",
-    desc: "High-purity salt suitable for food processing industries such as dairy, bakery, snacks and other manufacturing sectors.",
+    desc: "High-purity salt used in dairy, bakery, snack processing and other food manufacturing applications.",
     images: [
       "https://placehold.co/600x400",
       "https://placehold.co/600x400",
@@ -42,7 +42,7 @@ const products = [
   },
   {
     title: "Refined and Non-Refined Salt",
-    desc: "Processed salt with controlled purity levels and uniform particle size used in various industrial and food applications.",
+    desc: "Processed and natural salt is available in different purity levels and granulometries for industrial and food applications, and is used in detergents, soaps, soda ash production, chemical processing, and various other industrial applications.",
     images: [
       "https://placehold.co/600x400",
       "https://placehold.co/600x400",
@@ -50,6 +50,8 @@ const products = [
     ],
   },
 ];
+
+const packagingSizes = "25 KG, 50 KG, 1MT AND CUSTOM BAG SIZE";
 
 export default function ProductsAlt() {
   return (
@@ -76,7 +78,7 @@ export default function ProductsAlt() {
           </motion.h2>
 
           <motion.p
-            className="text-slate-600"
+            className="text-slate-600 text-justify"
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
@@ -133,8 +135,11 @@ export default function ProductsAlt() {
                   <h3 className="text-2xl md:text-3xl font-semibold mb-4">
                     {product.title}
                   </h3>
-                  <p className="text-slate-600 text-lg leading-relaxed">
+                  <p className="text-slate-600 text-lg leading-relaxed text-justify">
                     {product.desc}
+                  </p>
+                  <p className="text-slate-700 mt-4 font-medium tracking-wide uppercase text-sm">
+                    {packagingSizes}
                   </p>
                 </motion.div>
               </div>

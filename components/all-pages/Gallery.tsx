@@ -3,7 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import Link from "next/link";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { motion } from "motion/react";
 import { scrollToView } from "@/lib/scrollToView";
 import { Button } from "../ui/button";
@@ -57,31 +63,40 @@ export default function Gallery() {
           </motion.p>
         </div>
 
-        {/* Grid */}
-        <div className="px-6 md:px-0 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {images.map((src, i) => (
-            <motion.div
-              key={i}
-              onClick={() => setSelected(src)}
-              className="relative cursor-pointer group overflow-hidden rounded-2xl"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.45, delay: i * 0.06, ease: "easeOut" }}
-              whileHover={{ scale: 1.03, transition: { duration: 0.25 } }}
-            >
-              <Image
-                src={src}
-                alt="Gallery Image"
-                width={400}
-                height={300}
-                className="w-full h-48 object-cover transition duration-500"
-              />
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition" />
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          className="px-6 md:px-0"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          <Carousel className="w-full max-w-6xl mx-auto">
+            <CarouselContent>
+              {images.map((src, i) => (
+                <CarouselItem
+                  key={i}
+                  className="basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                >
+                  <div
+                    onClick={() => setSelected(src)}
+                    className="relative cursor-pointer group overflow-hidden rounded-2xl"
+                  >
+                    <Image
+                      src={src}
+                      alt={`Gallery image ${i + 1}`}
+                      width={400}
+                      height={300}
+                      className="w-full h-56 object-cover transition duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition" />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-0 md:-left-4 cursor-pointer" />
+            <CarouselNext className="right-0 md:-right-4 cursor-pointer" />
+          </Carousel>
+        </motion.div>
 
         {/* Lightbox */}
         <Dialog open={!!selected} onOpenChange={() => setSelected(null)}>

@@ -135,7 +135,7 @@ export default function RootLayout({
         <Navbar />
         <Toaster />
         <main className="overflow-hidden">{children}</main>
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );

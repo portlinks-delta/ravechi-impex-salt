@@ -1,15 +1,7 @@
 "use client";
 
 import { CheckCircle } from "lucide-react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "motion/react";
 import { Button } from "../ui/button";
 import { scrollToView } from "@/lib/scrollToView";
@@ -51,7 +43,7 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <motion.p
-            className="text-lg text-foreground mb-6"
+            className="text-lg text-foreground mb-6 text-justify"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.4 }}
@@ -65,7 +57,7 @@ export default function About() {
           </motion.p>
 
           <motion.p
-            className="text-lg text-foreground mb-8"
+            className="text-lg text-foreground mb-8 text-justify"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.4 }}
@@ -77,6 +69,7 @@ export default function About() {
             <br />
             We work with importers, distributors and industrial users across
             multiple sectors that require consistent salt quality for their
+            operations.
           </motion.p>
 
           <div className="space-y-4">
@@ -109,29 +102,15 @@ export default function About() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.55, ease: "easeOut" }}
         >
-          <Carousel className="w-full">
-            <CarouselContent>
-              {[
-                "https://www.krishnasalts.com/wp-content/uploads/2024/06/salt-2.jpeg",
-                "https://www.krishnasalts.com/wp-content/uploads/2024/01/triple-refined-free-flow-Iodized-salt-1.jpg",
-                "https://www.krishnasalts.com/wp-content/uploads/2024/01/industrial-salt-freeflow-500x500-1.png",
-              ].map((src, index) => (
-                <CarouselItem key={index}>
-                  <div className="rounded-2xl overflow-hidden shadow-xl">
-                    <Image
-                      width={500}
-                      height={500}
-                      src={src}
-                      alt={`Salt Image ${index + 1}`}
-                      className="w-full h-[400px] object-cover"
-                    />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-2 cursor-pointer" />
-            <CarouselNext className="right-2 cursor-pointer" />
-          </Carousel>
+          <div className="rounded-2xl overflow-hidden shadow-xl">
+            <Image
+              width={900}
+              height={700}
+              src="https://www.krishnasalts.com/wp-content/uploads/2024/06/salt-2.jpeg"
+              alt="Shree Ravechi Impex salt production"
+              className="w-full h-[400px] object-cover"
+            />
+          </div>
         </motion.div>
       </div>
     </section>

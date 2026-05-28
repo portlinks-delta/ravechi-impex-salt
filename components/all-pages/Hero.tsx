@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import RequestQuote from "../ui/RequestQuote";
 import { Badge } from "../ui/badge";
-import Image from "next/image";
 import { motion } from "motion/react";
 import { scrollToView } from "@/lib/scrollToView";
 
@@ -14,11 +13,11 @@ export default function Hero() {
       className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
     >
       <div className="absolute inset-0">
-        <Image
-          fill
-          src="/salt-1.png"
+        <img
+          src="/hero-img.jpeg"
           alt="Salt background"
-          className="w-full h-full object-cover scale-105"
+          className="w-full h-full object-cover scale-105 absolute inset-0"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-black/60" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/80" />
