@@ -111,7 +111,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: "Shree Ravechi Impex",
               url: BASE_URL,
-              logo: `${BASE_URL}/logo.png`,
+              logo: `${BASE_URL}/SRILOGO.png`,
               description:
                 "Trusted exporter of industrial and food grade salt from Kutch, Gujarat, India.",
               address: {
@@ -135,7 +135,7 @@ export default function RootLayout({
         <Navbar />
         <Toaster />
         <main className="overflow-hidden">{children}</main>
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );

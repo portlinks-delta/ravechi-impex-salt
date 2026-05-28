@@ -10,6 +10,7 @@ const navigationData = [
 import { useEffect, useState } from "react";
 import { MenuIcon, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { motion, AnimatePresence } from "motion/react";
@@ -65,11 +66,15 @@ const Navbar = () => {
         <ScrollProgress />
         <div className="mx-auto flex container items-center justify-between px-4 py-3 sm:px-6">
           <div className="flex items-center">
-            <Link
-              href="/"
-              className="w-8 h-8 flex items-center justify-center rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 text-white font-bold text-sm shadow-md"
-            >
-              SRI
+            <Link href="/" className="flex items-center justify-center">
+              <img
+                src="/SRILOGO.png"
+                alt="Shree Ravechi Impex logo"
+                width={40}
+                height={40}
+                className="h-10 w-10 object-contain"
+                loading="eager"
+              />
             </Link>
             <span className="ml-3 text-sm md:text-lg font-bold text-foreground tracking-wide">
               Shree Ravechi Impex
@@ -130,9 +135,16 @@ const Navbar = () => {
                 <Link
                   href="/"
                   onClick={() => setMobileOpen(false)}
-                  className="w-6 h-6 flex text-xs items-center justify-center rounded-lg bg-gradient-to-br from-sky-500 to-blue-600 text-white font-bold text-sm shadow-md"
+                  className="flex items-center justify-center"
                 >
-                  SRI
+                  <img
+                    src="/SRILOGO.png"
+                    alt="Shree Ravechi Impex logo"
+                    width={32}
+                    height={32}
+                    loading="eager"
+                    className="h-8 w-8 object-contain"
+                  />
                 </Link>
                 <span className="ml-2 md:ml-3 text-sm md:text-lg font-bold text-foreground tracking-wide">
                   Shree Ravechi Impex

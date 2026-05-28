@@ -1,5 +1,4 @@
 import dbConnect from "@/lib/db";
-import VisitorModel from "@/models/visitors";
 import { NextRequest, NextResponse } from "next/server";
 import Visitor from "@/models/visitors";
 
@@ -62,9 +61,14 @@ export async function POST(req: NextRequest) {
       { status: 200 },
     );
   } catch (error: any) {
+    console.error("POST /api/visitor-count failed:", error?.message || error);
     return NextResponse.json(
-      { error: "Error: " + error.message },
-      { status: 400 },
+      {
+        counted: false,
+        totalVisits: 0,
+        degraded: true,
+      },
+      { status: 200 },
     );
   }
 }
@@ -94,9 +98,14 @@ export async function GET() {
       { status: 200 },
     );
   } catch (error: any) {
+    console.error("GET /api/visitor-count failed:", error?.message || error);
     return NextResponse.json(
-      { error: "Error: " + error.message },
-      { status: 400 },
+      {
+        totalVisits: 0,
+        uniqueVisitors: 0,
+        degraded: true,
+      },
+      { status: 200 },
     );
   }
 }

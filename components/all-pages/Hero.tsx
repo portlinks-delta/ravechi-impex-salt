@@ -91,7 +91,7 @@ export default function Hero() {
         >
           <span>ISO Certified</span>
           <span className="text-white/20">|</span>
-          <span>50+ Countries Served</span>
+          <span>Chemical-Free Processing</span>
           <span className="text-white/20">|</span>
           <span>FSSAI Approved</span>
           <span className="text-white/20">|</span>

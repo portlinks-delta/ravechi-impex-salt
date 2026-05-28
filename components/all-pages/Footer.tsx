@@ -3,6 +3,7 @@
 import { EMAIL, FORMATTED_PHONE_NUMBER } from "@/constants";
 import { Mail, Phone, MapPin } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import VisitorCount from "../ui/VisitCount";
 
 const navLinks = [
@@ -19,11 +20,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
             <div className="flex items-center mb-5">
-              <Link
-                href="/"
-                className="w-8 h-8 flex text-xs items-center justify-center rounded-lg bg-gradient-to-br from-sky-500 to-blue-600 text-white font-bold text-sm shadow-md"
-              >
-                SRI
+              <Link href="/" className="flex items-center justify-center">
+                <img
+                  src="/SRILOGO.png"
+                  alt="Shree Ravechi Impex logo"
+                  width={40}
+                  height={40}
+                  loading="eager"
+                  className="h-10 w-10 object-contain brightness-0 invert"
+                />
               </Link>
               <span className="ml-2 md:ml-3 text-sm md:text-lg font-bold tracking-wide">
                 Shree Ravechi Impex
@@ -99,14 +104,9 @@ export default function Footer() {
               href="https://portlinksindia.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sky-400 font-medium hover:text-sky-300 transition-colors"
+              className="text-sky-400 font-medium hover:text-sky-300 transition-colors"
             >
-              <img
-                src="/pli-logo.svg"
-                alt="PortLinks India"
-                className="w-28 h-28 opacity-80"
-                // className="w-28 h-28 brightness-0 invert opacity-80"
-              />
+              PortLinks India
             </a>
           </p>
         </div>

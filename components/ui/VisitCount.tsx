@@ -15,9 +15,15 @@ export default function VisitorCount() {
         });
 
         const data = await res.json();
-        setCount(data.totalVisits);
+        const parsedCount =
+          typeof data?.totalVisits === "number" &&
+          Number.isFinite(data.totalVisits)
+            ? data.totalVisits
+            : 0;
+        setCount(parsedCount);
       } catch (err) {
         console.error("Visitor count error:", err);
+        setCount(0);
       }
     };
 
@@ -32,7 +38,7 @@ export default function VisitorCount() {
           <span className="font-medium text-background">Visitors:</span>
         </div>
         <span className="font-bold font-mono text-lg">
-          {count !== null ? (
+          {typeof count === "number" ? (
             <SlotCounter
               animateOnVisible
               animateUnchanged

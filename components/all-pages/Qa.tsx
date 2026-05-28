@@ -6,11 +6,17 @@ import {
   FileCheck,
   Package,
   Settings,
+  Leaf,
 } from "lucide-react";
 import Link from "next/link";
 import { motion } from "motion/react";
 
 const features = [
+  {
+    title: "Chemical-free processing",
+    desc: "Salt is processed without harmful chemical treatment to preserve natural quality and application safety.",
+    icon: Leaf,
+  },
   {
     title: "Raw material inspection",
     desc: "Inspection of raw materials before processing.",
@@ -82,7 +88,7 @@ export default function Quality() {
         </div>
 
         {/* Cards */}
-        <div className="flex flex-wrap items-center justify-center lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((item, i) => {
             const Icon = item.icon;
             return (
