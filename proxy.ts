@@ -10,7 +10,7 @@ export function proxy(req: NextRequest) {
     pathname.startsWith("/blocked") ||
     pathname.startsWith("/api") ||
     pathname.startsWith("/_next") ||
-    pathname === "/favicon.ico"
+    pathname === "/SRILOGO.png"
   ) {
     return NextResponse.next();
   }

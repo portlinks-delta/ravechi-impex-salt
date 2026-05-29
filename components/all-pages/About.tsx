@@ -8,7 +8,10 @@ import { scrollToView } from "@/lib/scrollToView";
 
 export default function About() {
   return (
-    <section id="about" className="w-full py-20 bg-slate-50 text-slate-900">
+    <section
+      id="about"
+      className="max-w-5xl mx-auto px-6 py-20  text-slate-900"
+    >
       <div className="max-w-3xl mx-auto text-center mb-12">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -40,7 +43,7 @@ export default function About() {
         </motion.p>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="">
         <div>
           <motion.p
             className="text-lg text-foreground mb-6 text-justify"
@@ -73,7 +76,7 @@ export default function About() {
             operations.
           </motion.p>
 
-          <div className="space-y-4">
+          <div className="grid grid-cols-2 w-full items-center justify-center gap-4">
             {[
               "Strategic location near Mundra Port",
               "Wide range of salt grades & granulations",
@@ -95,24 +98,6 @@ export default function About() {
             ))}
           </div>
         </div>
-
-        <motion.div
-          className="relative"
-          initial={{ opacity: 0, scale: 0.97, x: 20 }}
-          whileInView={{ opacity: 1, scale: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.55, ease: "easeOut" }}
-        >
-          <div className="rounded-2xl overflow-hidden shadow-xl">
-            <Image
-              width={900}
-              height={700}
-              src="https://www.krishnasalts.com/wp-content/uploads/2024/06/salt-2.jpeg"
-              alt="Shree Ravechi Impex salt production"
-              className="w-full h-[400px] object-cover"
-            />
-          </div>
-        </motion.div>
       </div>
     </section>
   );
