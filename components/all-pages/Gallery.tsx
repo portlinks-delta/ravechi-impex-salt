@@ -1,23 +1,13 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { motion } from "motion/react";
 import { scrollToView } from "@/lib/scrollToView";
 import { Button } from "../ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const images = [
-  "https://www.krishnasalts.com/wp-content/uploads/2024/06/salt-2.jpeg",
-  "https://www.krishnasalts.com/wp-content/uploads/2024/06/salt-2.jpeg",
-  "https://www.krishnasalts.com/wp-content/uploads/2024/06/salt-2.jpeg",
-  "https://www.krishnasalts.com/wp-content/uploads/2024/06/salt-2.jpeg",
-  "https://www.krishnasalts.com/wp-content/uploads/2024/06/salt-2.jpeg",
-  "https://www.krishnasalts.com/wp-content/uploads/2024/06/salt-2.jpeg",
-  "https://www.krishnasalts.com/wp-content/uploads/2024/06/salt-2.jpeg",
-  "https://www.krishnasalts.com/wp-content/uploads/2024/06/salt-2.jpeg",
-];
+const images = Array.from({ length: 13 }, (_, i) => `/${i + 1}.jpeg`);
 
 export default function Gallery() {
   const [current, setCurrent] = useState(0);
@@ -88,14 +78,13 @@ export default function Gallery() {
             className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden cursor-pointer shadow-lg"
             onClick={() => setSelected(images[current])}
           >
-            <Image
+            <img
               key={current}
               src={images[current]}
               alt={`Gallery image ${current + 1}`}
-              fill
-              className="object-cover transition-opacity duration-500"
-              sizes="(max-width: 768px) 100vw, 768px"
-              priority
+              className="absolute inset-0 h-full w-full object-cover transition-opacity duration-500"
+              loading={current === 0 ? "eager" : "lazy"}
+              decoding="async"
             />
             {/* Dark hover overlay */}
             <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition duration-300" />
@@ -142,13 +131,13 @@ export default function Gallery() {
         <Dialog open={!!selected} onOpenChange={() => setSelected(null)}>
           <DialogContent className="max-w-3xl p-0 overflow-hidden">
             {selected && (
-              <Image
-                src={selected}
-                alt="Preview"
-                width={1000}
-                height={700}
-                className="w-full h-auto object-cover"
-              />
+              <div className="relative w-full aspect-[16/10]">
+                <img
+                  src={selected}
+                  alt="Preview"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              </div>
             )}
           </DialogContent>
         </Dialog>

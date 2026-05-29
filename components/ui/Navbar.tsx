@@ -62,7 +62,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="relative bg-background shadow top-0 z-50">
+      <header className="sticky top-0 z-50 bg-background/95 shadow backdrop-blur supports-[backdrop-filter]:bg-background/80">
         <ScrollProgress />
         <div className="mx-auto flex container items-center justify-between px-4 py-3 sm:px-6">
           <div className="flex items-center">
