@@ -10,16 +10,16 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative w-full h-[90vh] flex items-center justify-center overflow-hidden"
     >
       <div className="absolute inset-0">
         <img
-          src="/hero-img.jpeg"
+          src="/hero-salt-1.jpeg"
           alt="Salt background"
           className="w-full h-full object-cover scale-105 absolute inset-0"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/80" />
       </div>
 
@@ -82,20 +82,25 @@ export default function Hero() {
             View Products
           </Button>
         </motion.div>
-
         <motion.div
           className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-2 text-xs sm:text-sm text-white/50 tracking-wider uppercase font-medium"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
         >
-          <span>ISO Certified</span>
-          <span className="text-white/20">|</span>
-          <span>Chemical-Free Processing</span>
-          <span className="text-white/20">|</span>
-          <span>FSSAI Approved</span>
-          <span className="text-white/20">|</span>
-          <span>Bulk &amp; Container Shipments</span>
+          {[
+            "ISO Certified",
+            "Chemical-Free Processing",
+            "FSSAI Approved",
+            "Bulk & Container Shipments",
+          ].map((label, i, arr) => (
+            <span key={label} className="flex items-center gap-x-8">
+              {label}
+              {i < arr.length - 1 && (
+                <span className="hidden sm:inline text-white/20">|</span>
+              )}
+            </span>
+          ))}
         </motion.div>
       </div>
     </section>

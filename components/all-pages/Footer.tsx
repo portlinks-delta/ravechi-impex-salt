@@ -1,21 +1,20 @@
 "use client";
 
 import { EMAIL, FORMATTED_PHONE_NUMBER } from "@/constants";
-import { Mail, Phone, MapPin } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import VisitorCount from "../ui/VisitCount";
+import { Home, Package, Info, Phone, Mail, MapPin } from "lucide-react";
 
 const navLinks = [
-  { title: "Home", href: "/" },
-  { title: "Products", href: "/#products" },
-  { title: "About Us", href: "/#about" },
-  { title: "Contact", href: "/#contact" },
+  { title: "Home", href: "/", icon: Home },
+  { title: "Products", href: "/#products", icon: Package },
+  { title: "About Us", href: "/#about", icon: Info },
+  { title: "Contact", href: "/#contact", icon: Phone },
 ];
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-slate-950 text-slate-300 pb-20">
+    <footer className="w-full bg-slate-950 text-background pb-20">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-14">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
@@ -30,9 +29,14 @@ export default function Footer() {
                   className="h-10 w-10 object-contain brightness-0 invert"
                 />
               </Link>
-              <span className="ml-2 md:ml-3 text-sm md:text-lg font-bold tracking-wide">
-                Shree Ravechi Impex
-              </span>
+              <div className="flex flex-col">
+                <span className="ml-2 md:ml-3 text-lg md:text-xl font-bold tracking-wide">
+                  Shree Ravechi Impex
+                </span>
+                <p className="text-xs opacity-50 font-normal pl-3">
+                  Salt producer and exporter
+                </p>
+              </div>
             </div>
 
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
@@ -81,9 +85,9 @@ export default function Footer() {
                 <li key={link.title}>
                   <Link
                     href={link.href}
-                    className="group hover:translate-x-1  flex items-center gap-2 hover:text-sky-400 transition-all duration-200"
+                    className="group hover:translate-x-1 flex items-center gap-2 hover:text-sky-400 transition-all duration-200"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500 opacity-0 group-hover:opacity-100 transition" />
+                    <link.icon className="w-4 h-4 text-sky-500 opacity-100 transition-opacity duration-200" />
                     {link.title}
                   </Link>
                 </li>

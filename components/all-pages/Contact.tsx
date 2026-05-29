@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { scrollToView } from "@/lib/scrollToView";
 import { Button } from "../ui/button";
+import { EMAIL, FORMATTED_PHONE_NUMBER } from "@/constants";
 
 export default function Contact() {
   return (
@@ -53,7 +54,7 @@ export default function Contact() {
           >
             <Mail className="w-6 h-6 text-primary mx-auto mb-3" />
             <h3 className="font-semibold text-slate-900 mb-1">Email</h3>
-            <p className="text-slate-600 text-sm">info@sri.in</p>
+            <p className="text-slate-600 text-sm">{EMAIL}</p>
           </motion.div>
 
           <motion.div
@@ -65,9 +66,9 @@ export default function Contact() {
           >
             <Phone className="w-6 h-6 text-primary mx-auto mb-3" />
             <h3 className="font-semibold text-slate-900 mb-1">Phone</h3>
-            <p className="text-slate-600 text-sm">+91 98765 43210</p>
+            <p className="text-slate-600 text-sm">{FORMATTED_PHONE_NUMBER}</p>
           </motion.div>
-
+    
           <motion.div
             className="p-6 border border-slate-200 rounded-2xl text-center hover:shadow-md transition"
             initial={{ opacity: 0, y: 20 }}

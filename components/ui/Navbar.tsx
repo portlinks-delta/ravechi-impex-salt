@@ -62,7 +62,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="relative bg-background shadow sticky top-0 z-50">
+      <header className="relative bg-background shadow top-0 z-50">
         <ScrollProgress />
         <div className="mx-auto flex container items-center justify-between px-4 py-3 sm:px-6">
           <div className="flex items-center">
@@ -76,9 +76,14 @@ const Navbar = () => {
                 loading="eager"
               />
             </Link>
-            <span className="ml-3 text-sm md:text-lg font-bold text-foreground tracking-wide">
-              Shree Ravechi Impex
-            </span>
+            <div className="flex flex-col">
+              <span className="ml-3 text-sm md:text-lg font-bold text-foreground tracking-wide">
+                Shree Ravechi Impex
+              </span>
+              <p className="text-xs text-muted-foreground pl-3">
+                Salt producer and exporter
+              </p>
+            </div>
           </div>
 
           <div className="flex items-center gap-2">
@@ -146,9 +151,14 @@ const Navbar = () => {
                     className="h-8 w-8 object-contain"
                   />
                 </Link>
-                <span className="ml-2 md:ml-3 text-sm md:text-lg font-bold text-foreground tracking-wide">
-                  Shree Ravechi Impex
-                </span>
+                <div className="flex flex-col">
+                  <span className="ml-3 text-sm md:text-lg font-bold text-foreground tracking-wide">
+                    Shree Ravechi Impex
+                  </span>
+                  <p className="text-xs text-muted-foreground pl-3">
+                    Salt producer and exporter
+                  </p>
+                </div>
               </div>
               <motion.button
                 className="p-1.5 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"

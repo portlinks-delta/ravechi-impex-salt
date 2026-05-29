@@ -1,18 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { motion } from "motion/react";
 import { scrollToView } from "@/lib/scrollToView";
 import { Button } from "../ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const images = [
   "https://www.krishnasalts.com/wp-content/uploads/2024/06/salt-2.jpeg",
@@ -26,11 +20,29 @@ const images = [
 ];
 
 export default function Gallery() {
+  const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
+
+  const prev = useCallback(
+    () => setCurrent((i) => (i - 1 + images.length) % images.length),
+    [],
+  );
+
+  const next = useCallback(
+    () => setCurrent((i) => (i + 1) % images.length),
+    [],
+  );
+
+  // Auto-scroll every 3.5s, pauses when lightbox is open
+  useEffect(() => {
+    if (selected) return;
+    const timer = setInterval(next, 3500);
+    return () => clearInterval(timer);
+  }, [next, selected]);
 
   return (
     <section id="gallery" className="w-full py-20">
-      <div className="max-w-7xl mx-auto lg:px-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="max-w-max md:max-w-3xl mx-auto text-center mb-14">
           <motion.div
@@ -63,39 +75,67 @@ export default function Gallery() {
           </motion.p>
         </div>
 
+        {/* Single Image Carousel */}
         <motion.div
-          className="px-6 md:px-0"
+          className="relative w-full max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          <Carousel className="w-full max-w-6xl mx-auto">
-            <CarouselContent>
-              {images.map((src, i) => (
-                <CarouselItem
-                  key={i}
-                  className="basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
-                >
-                  <div
-                    onClick={() => setSelected(src)}
-                    className="relative cursor-pointer group overflow-hidden rounded-2xl"
-                  >
-                    <Image
-                      src={src}
-                      alt={`Gallery image ${i + 1}`}
-                      width={400}
-                      height={300}
-                      className="w-full h-56 object-cover transition duration-500"
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition" />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-0 md:-left-4 cursor-pointer" />
-            <CarouselNext className="right-0 md:-right-4 cursor-pointer" />
-          </Carousel>
+          {/* Image */}
+          <div
+            className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden cursor-pointer shadow-lg"
+            onClick={() => setSelected(images[current])}
+          >
+            <Image
+              key={current}
+              src={images[current]}
+              alt={`Gallery image ${current + 1}`}
+              fill
+              className="object-cover transition-opacity duration-500"
+              sizes="(max-width: 768px) 100vw, 768px"
+              priority
+            />
+            {/* Dark hover overlay */}
+            <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition duration-300" />
+            {/* Counter badge */}
+            <div className="absolute bottom-3 right-4 bg-black/50 text-white text-xs px-2.5 py-1 rounded-full backdrop-blur-sm">
+              {current + 1} / {images.length}
+            </div>
+          </div>
+
+          {/* Prev / Next buttons */}
+          <button
+            onClick={prev}
+            className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-slate-800 rounded-full p-2 shadow-md transition cursor-pointer"
+            aria-label="Previous"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={next}
+            className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-slate-800 rounded-full p-2 shadow-md transition cursor-pointer"
+            aria-label="Next"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          {/* Dot indicators */}
+          <div className="flex justify-center gap-2 mt-5">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`rounded-full transition-all duration-300 cursor-pointer ${
+                  i === current
+                    ? "w-6 h-2 bg-sky-500"
+                    : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
+                }`}
+                aria-label={`Go to image ${i + 1}`}
+              />
+            ))}
+          </div>
         </motion.div>
 
         {/* Lightbox */}

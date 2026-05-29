@@ -1,57 +1,35 @@
 "use client";
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { scrollToView } from "@/lib/scrollToView";
 import { Button } from "../ui/button";
+import { Package } from "lucide-react";
 
 const products = [
   {
     title: "De-icing Road Salt",
     desc: "Screened de-icing salt produced for reliable ice melting performance and snow management on roads, parking areas, industrial surfaces and cold storage management in winter conditions.",
-    images: [
-      "https://placehold.co/600x400",
-      "https://placehold.co/600x400",
-      "https://placehold.co/600x400",
-    ],
+    image: "https://placehold.co/600x400",
   },
   {
     title: "Industrial Salt",
     desc: "High-quality salt suitable for chemical processing, water treatment, textile industries and various industrial applications.",
-    images: [
-      "https://placehold.co/600x400",
-      "https://placehold.co/600x400",
-      "https://placehold.co/600x400",
-    ],
+    image: "https://placehold.co/600x400",
   },
   {
     title: "Food Grade Salt",
     desc: "High-purity salt used in dairy, bakery, snack processing and other food manufacturing applications.",
-    images: [
-      "https://placehold.co/600x400",
-      "https://placehold.co/600x400",
-      "https://placehold.co/600x400",
-    ],
+    image: "https://placehold.co/600x400",
   },
   {
     title: "Refined and Non-Refined Salt",
     desc: "Processed and natural salt is available in different purity levels and granulometries for industrial and food applications, and is used in detergents, soaps, soda ash production, chemical processing, and various other industrial applications.",
-    images: [
-      "https://placehold.co/600x400",
-      "https://placehold.co/600x400",
-      "https://placehold.co/600x400",
-    ],
+    image: "https://placehold.co/600x400",
   },
 ];
 
-const packagingSizes = "25 KG, 50 KG, 1MT AND CUSTOM BAG SIZE";
+const packagingSizes = ["25 KG", "50 KG", "1 MT", "Custom Bag Size"];
 
 export default function ProductsAlt() {
   return (
@@ -99,7 +77,7 @@ export default function ProductsAlt() {
                 key={index}
                 className="grid md:grid-cols-2 gap-10 items-center"
               >
-                {/* Carousel */}
+                {/* Image */}
                 <motion.div
                   className={`relative ${isReverse ? "md:order-2" : ""}`}
                   initial={{ opacity: 0, x: isReverse ? 40 : -40 }}
@@ -107,21 +85,14 @@ export default function ProductsAlt() {
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.55, ease: "easeOut" }}
                 >
-                  <Carousel className="w-full group">
-                    <CarouselContent>
-                      {product.images.map((img, i) => (
-                        <CarouselItem key={i}>
-                          <img
-                            src={img}
-                            alt={`${product.title}-${i}`}
-                            className="w-full h-[350px] object-cover rounded-2xl shadow-lg"
-                          />
-                        </CarouselItem>
-                      ))}
-                    </CarouselContent>
-                    <CarouselPrevious className="left-2 cursor-pointer" />
-                    <CarouselNext className="right-2 cursor-pointer" />
-                  </Carousel>
+                  <div className="relative w-full aspect-[4/3]">
+                    <img
+                      src={product.image}
+                      alt={product.title}
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
                 </motion.div>
 
                 {/* Text */}
@@ -138,9 +109,19 @@ export default function ProductsAlt() {
                   <p className="text-slate-600 text-lg leading-relaxed text-justify">
                     {product.desc}
                   </p>
-                  <p className="text-slate-700 mt-4 font-medium tracking-wide uppercase text-sm">
-                    {packagingSizes}
-                  </p>
+                  <div className="flex items-center gap-2 mt-4 flex-wrap">
+                    <span className="text-sm font-semibold text-slate-500 uppercase tracking-wider">
+                      Size:
+                    </span>
+                    {packagingSizes.map((size) => (
+                      <span
+                        key={size}
+                        className="px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-sky-700 text-sm font-medium"
+                      >
+                        {size}
+                      </span>
+                    ))}
+                  </div>
                 </motion.div>
               </div>
             );

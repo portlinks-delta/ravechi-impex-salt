@@ -83,7 +83,7 @@ export default function Quality() {
           >
             Quality consistency is an important part of our supply process. We
             follow standard quality checks before dispatch to ensure the product
-            meets buyer specifications
+            meets buyer specifications.
           </motion.p>
         </div>
 
@@ -103,13 +103,15 @@ export default function Quality() {
                   ease: "easeOut",
                 }}
               >
-                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-sky-50 mb-4 group-hover:bg-sky-100 transition">
-                  <Icon className="w-6 h-6 text-primary" />
-                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-sky-50 mb-4 group-hover:bg-sky-100 transition">
+                    <Icon className="w-6 h-6 text-primary" />
+                  </div>
 
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">
-                  {item.title}
-                </h3>
+                  <h3 className="text-lg font-semibold mt-2 text-slate-900">
+                    {item.title}
+                  </h3>
+                </div>
 
                 <p className="text-sm text-slate-600 leading-relaxed">
                   {item.desc}

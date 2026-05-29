@@ -43,7 +43,7 @@ export default function LogisticsExports() {
     <section id="logistics" className="w-full py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-12">
+        <div className="max-w-max md:max-w-4xl mx-auto text-center mb-12">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -91,13 +91,14 @@ export default function LogisticsExports() {
                   ease: "easeOut",
                 }}
               >
-                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-sky-50 mb-4 group-hover:bg-sky-100 transition">
-                  <Icon className="w-6 h-6 text-primary" />
+                <div className="flex items-start gap-3">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-sky-50 mb-4 group-hover:bg-sky-100 transition">
+                    <Icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-semibold mt-2 text-slate-900">
+                    {item.title}
+                  </h3>
                 </div>
-
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">
-                  {item.title}
-                </h3>
 
                 <p className="text-sm text-slate-600 leading-relaxed">
                   {item.desc}

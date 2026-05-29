@@ -67,6 +67,7 @@ export default function About() {
             export practices, enabling our partners to source salt from India
             with confidence.
             <br />
+            <br />
             We work with importers, distributors and industrial users across
             multiple sectors that require consistent salt quality for their
             operations.

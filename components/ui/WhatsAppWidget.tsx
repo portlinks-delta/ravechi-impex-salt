@@ -1,12 +1,12 @@
 "use client";
 
+import { PHONE_NUMBER } from "@/constants";
 import { FaWhatsapp } from "react-icons/fa";
 
 export function WhatsAppWidget() {
-  const phone = "919876543210";
   const message = "Hello, I am interested in your salt products.";
 
-  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  const url = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
 
   return (
     <a
