@@ -13,7 +13,7 @@ export default function CheckPage() {
         window.grecaptcha.ready(async () => {
           const token = await window.grecaptcha.execute(
             process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY!,
-            { action: "entry" },
+            { action: "entry" }
           );
 
           const res = await fetch("/api/verify-captcha", {
@@ -24,8 +24,7 @@ export default function CheckPage() {
           const data = await res.json();
 
           if (data.success) {
-            document.cookie = "captcha_passed=true; path=/";
-
+            // ✅ Cookie is set by the API (httpOnly) — no document.cookie here
             window.location.href = "/";
           } else {
             window.location.href = "/blocked";

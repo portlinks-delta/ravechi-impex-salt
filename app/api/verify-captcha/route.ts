@@ -18,8 +18,7 @@ export async function POST(req: Request) {
   });
 
   const data = await res.json();
-  console.log(data);
-  // data.score = 0.1;
+
   if (!data.success || data.score < 0.5) {
     return NextResponse.json({ success: false, score: data.score });
   }
@@ -32,6 +31,9 @@ export async function POST(req: Request) {
   response.cookies.set("captcha_passed", "true", {
     path: "/",
     httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+    maxAge: 60 * 60 * 24,
   });
 
   return response;
