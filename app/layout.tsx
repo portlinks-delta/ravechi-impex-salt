@@ -66,7 +66,7 @@ export const metadata: Metadata = {
       "Trusted exporter of industrial and food grade salt from Kutch, Gujarat. ISO certified, FSSAI approved, delivering to 50+ countries worldwide.",
     images: [
       {
-        url: "/og-img.png",
+        url: `${BASE_URL}/og-img.png`,
         width: 1200,
         height: 630,
         alt: "Shree Ravechi Impex — Salt Exporter from Gujarat, India",
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     title: "Shree Ravechi Impex | Premium Salt Exporter from Gujarat, India",
     description:
       "Trusted exporter of industrial and food grade salt from Kutch, Gujarat. ISO certified, FSSAI approved, delivering to 50+ countries worldwide.",
-    images: ["/srilogo-bgcircle.png"],
+    images: [`${BASE_URL}/srilogo-bgcircle.png`], // ✅ Absolute URL
   },
 
   icons: {

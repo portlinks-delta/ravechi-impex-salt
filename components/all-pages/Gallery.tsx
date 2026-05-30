@@ -129,7 +129,7 @@ export default function Gallery() {
 
         {/* Lightbox */}
         <Dialog open={!!selected} onOpenChange={() => setSelected(null)}>
-          <DialogContent className="max-w-3xl p-0 overflow-hidden">
+          <DialogContent className="w-full h-fit p-0 overflow-hidden">
             {selected && (
               <div className="relative w-full aspect-[16/10]">
                 <img
