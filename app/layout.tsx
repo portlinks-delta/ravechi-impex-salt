@@ -70,7 +70,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "Shree Ravechi Impex — Salt Exporter from Gujarat, India",
-        type: "image/jpeg",
+        type: "image/jpg",
       },
     ],
   },
