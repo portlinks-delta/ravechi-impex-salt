@@ -13,7 +13,7 @@ const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-const BASE_URL = "https://ravechi-impex-salt-hot4.vercel.app"; // 🔁 replace with real domain
+const BASE_URL = "https://ravechi-impex-salt-hot4.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -86,10 +86,12 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/srilogo-bgcircle.png" },
-      { url: "/icon-16.png", sizes: "16x16", type: "image/png" },
-      { url: "/icon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/srilogo-bgcircle.png", sizes: "16x16", type: "image/png" },
+      { url: "/srilogo-bgcircle.png", sizes: "32x32", type: "image/png" },
     ],
-    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+    apple: [
+      { url: "/srilogo-bgcircle.png", sizes: "180x180", type: "image/png" },
+    ],
     shortcut: "/srilogo-bgcircle.png",
   },
   verification: {},

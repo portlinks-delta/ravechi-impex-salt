@@ -10,7 +10,7 @@ const products = [
   {
     title: "De-icing Road Salt",
     desc: "Screened de-icing salt produced for reliable ice melting performance and snow management on roads, parking areas, industrial surfaces and cold storage management in winter conditions.",
-    image: "https://placehold.co/600x400",
+    image: "/D1.jpeg",
   },
   {
     title: "Industrial Salt",
