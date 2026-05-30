@@ -2,22 +2,22 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function proxy(req: NextRequest) {
-  const hasCaptcha = req.cookies.get("captcha_passed");
-  const { pathname } = req.nextUrl;
+  // const hasCaptcha = req.cookies.get("captcha_passed");
+  // const { pathname } = req.nextUrl;
 
-  if (
-    pathname.startsWith("/check") ||
-    pathname.startsWith("/blocked") ||
-    pathname.startsWith("/api") ||
-    pathname.startsWith("/_next") ||
-    pathname === "/SRILOGO.png"
-  ) {
-    return NextResponse.next();
-  }
+  // if (
+  //   pathname.startsWith("/check") ||
+  //   pathname.startsWith("/blocked") ||
+  //   pathname.startsWith("/api") ||
+  //   pathname.startsWith("/_next") ||
+  //   pathname === "/SRILOGO.png"
+  // ) {
+  //   return NextResponse.next();
+  // }
 
-  if (!hasCaptcha) {
-    return NextResponse.redirect(new URL("/check", req.url));
-  }
+  // if (!hasCaptcha) {
+  //   return NextResponse.redirect(new URL("/check", req.url));
+  // }
 
   return NextResponse.next();
 }
