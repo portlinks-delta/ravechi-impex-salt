@@ -10,22 +10,22 @@ const products = [
   {
     title: "De-icing Road Salt",
     desc: "Screened de-icing salt produced for reliable ice melting performance and snow management on roads, parking areas, industrial surfaces and cold storage management in winter conditions.",
-    image: "/D1.jpeg",
+    image: "/deicing-salt.png",
   },
   {
     title: "Industrial Salt",
     desc: "High-quality salt suitable for chemical processing, water treatment, textile industries and various industrial applications.",
-    image: "https://placehold.co/600x400",
+    image: "/industrial-salt.png",
   },
   {
     title: "Food Grade Salt",
     desc: "High-purity salt used in dairy, bakery, snack processing and other food manufacturing applications.",
-    image: "https://placehold.co/600x400",
+    image: "/food-grade-salt.png",
   },
   {
     title: "Refined and Non-Refined Salt",
     desc: "Processed and natural salt is available in different purity levels and granulometries for industrial and food applications, and is used in detergents, soaps, soda ash production, chemical processing, and various other industrial applications.",
-    image: "https://placehold.co/600x400",
+    image: "/r-nr-salt.png",
   },
 ];
 
